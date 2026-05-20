@@ -1,0 +1,1 @@
+# frontend-gerador-senhas-seguras
