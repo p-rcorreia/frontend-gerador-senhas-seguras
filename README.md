@@ -1,8 +1,8 @@
 # Front-end para Gerador de Senhas Seguras
 
-Interface gráfica em JavaFX para consumir ou reutilizar a lógica do gerador de senhas seguras.
+Interface gráfica em JavaFX para gerar senhas seguras usando a lógica criada no projeto anterior.
 
-Este projeto será a continuação visual do [Gerador de Senhas Seguras](../03-gerador-senhas-seguras), levando para uma interface gráfica o conhecimento de `SecureRandom`, entropia e geração de senhas fortes.
+![Demonstração do front-end do gerador de senhas](./assets/gui-gerador-de-senhas.gif)
 
 ## Repositório
 
@@ -10,33 +10,54 @@ Este projeto será a continuação visual do [Gerador de Senhas Seguras](../03-g
 
 ## Objetivo
 
-Construir uma tela amigável para configurar critérios de senha e exibir o resultado gerado.
+Adicionar uma interface gráfica ao gerador de senhas seguras, reutilizando o método estático `GeradorDeSenhas.gerarSenha(int comprimento)`.
 
 ## Conceitos praticados
 
 - JavaFX
-- Controles de formulário
-- Checkboxes e inputs numéricos
-- Integração entre interface e regra de negócio
-- Reutilização da lógica segura criada com `SecureRandom`
-- CSS para aplicações desktop
+- Java package
+- Reutilização de regra de negócio
+- Método estático
+- `TextField` para entrada e saída de dados
+- Campo de senha gerada não editável
+- Evento de botão com `setOnAction`
+- Layout com `VBox`
+- Espaçamento com `Insets`
+- Estilização com arquivo CSS
+- Integração entre interface gráfica e lógica de segurança com `SecureRandom`
 
-## Funcionalidades planejadas
+## Funcionalidades
 
-- Campo para tamanho da senha
-- Opções para tipos de caracteres
-- Botão para gerar
-- Campo para exibir a senha
-- Botão para limpar ou gerar novamente
-- Opcional: botão para copiar senha
+- Campo para informar o tamanho da senha
+- Botão para gerar senha
+- Exibição da senha gerada em um `TextField`
+- Campo de resultado bloqueado para edição manual
+- Visual customizado com CSS
+
+## Estrutura
+
+```txt
+geradorDeSenhas/
+  FrontGeradorDeSenhas.java
+  GeradorDeSenhas.java
+  style.css
+assets/
+  gui-gerador-de-senhas.gif
+```
+
+## Como executar
+
+No PowerShell, a partir da pasta do projeto:
+
+```powershell
+javac --module-path "$env:PATH_TO_FX" --add-modules javafx.controls .\geradorDeSenhas\*.java
+java --module-path "$env:PATH_TO_FX" --add-modules javafx.controls geradorDeSenhas.FrontGeradorDeSenhas
+```
+
+## Aprendizado principal
+
+Este projeto mostrou como uma regra de negócio pode ser reaproveitada em outra interface. A geração da senha ficou isolada na classe `GeradorDeSenhas`, enquanto a classe `FrontGeradorDeSenhas` ficou responsável pela tela, pelos controles e pela interação com o usuário.
 
 ## Status
 
-Planejado.
-
-## Evidências para portfólio
-
-- Screenshot da interface
-- Vídeo demonstrando o fluxo completo
-- Explicação da separação entre lógica e interface
-- Link para o projeto base de segurança: [Gerador de Senhas Seguras](../03-gerador-senhas-seguras)
+Concluído.
